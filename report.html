@@ -3,474 +3,852 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Marketing Partner - Comprehensive Marketing Report</title>
-    
-    <!-- Tailwind CSS -->
+    <title>AI Marketing Implementation Report - AI Marketing Partner</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        :root {
+            --navy: #1B365D;
+            --gold: #D4AF37;
+            --light-gold: #FFD700;
+            --dark-navy: #0F1B2A;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #1f2937;
+            color: #333;
         }
         
-        .heading-font {
-            font-family: 'Playfair Display', serif;
+        .navy-bg { background-color: var(--navy); }
+        .gold-bg { background-color: var(--gold); }
+        .navy-text { color: var(--navy); }
+        .gold-text { color: var(--gold); }
+        
+        .gradient-navy {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 100%);
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        .chart-container {
+            height: 300px;
+            max-width: 100%;
+            margin: 0 auto;
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .section-card {
+            background: white;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-            margin: 2rem 0;
+        .timeline-item {
+            border-left: 3px solid var(--gold);
+            position: relative;
         }
         
-        .stat-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-left: 4px solid #3b82f6;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            background-color: var(--gold);
+            border-radius: 50%;
         }
         
         .cta-button {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
         
         .cta-button:hover {
+            background: linear-gradient(45deg, var(--light-gold), var(--gold));
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
         }
         
-        .icon-circle {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: #1e40af;
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
         }
         
          {
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .no-print {
-                display: none;
-            }
+            body { font-size: 12px; }
+            .no-print { display: none; }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header Section -->
-    <div class="gradient-bg text-white py-12">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h1 class="heading-font text-4xl md:text-5xl font-bold mb-4">
-                AI Marketing Partner
-            </h1>
-            <p class="text-xl md:text-2xl font-light opacity-95 mb-4">
-                Comprehensive Marketing Analysis Report
-            </p>
-            <p class="text-lg opacity-90" id="generated-date">
-                Generated on: <span id="current-date"></span>
-            </p>
+    <!-- Navigation -->
+    <nav class="gradient-navy text-white py-4 no-print">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="font-bold text-xl gold-text">AI Marketing Partner</div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="https://aimarketingpartner.com/about" class="nav-link">About Us</a>
+                    <a href="https://aimarketingpartner.com/multi-channel-marketing" class="nav-link">Services</a>
+                    <a href="https://wordhotel.com/67d8f51f8703babfcd19cc73" target="_blank" class="nav-link">Blog</a>
+                    <a href="https://aimarketingpartner.com/contact" class="nav-link">Contact</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-6 py-8 bg-white shadow-xl">
-        
+    <!-- Header -->
+    <header class="gradient-navy text-white py-8">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">AI MARKETING IMPLEMENTATION REPORT</h1>
+                    <p class="gold-text text-xl font-semibold">Personalized for [Name] - Bridge Your AI Gap</p>
+                </div>
+                <div class="text-right">
+                    <div class="gold-text font-bold text-lg">AI Marketing Partner</div>
+                    <div class="text-sm opacity-90">Hawaii-based • $900M+ Revenue Generated</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-8">
         <!-- Executive Summary -->
         <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-chart-line text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">Executive Summary</h2>
-            </div>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
-                <p class="text-lg text-gray-700 leading-relaxed">
-                    This comprehensive analysis provides actionable insights for your business based on current market trends and digital marketing best practices. Our AI-powered analysis identifies key opportunities for growth and optimization across multiple channels.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="stat-card p-6 rounded-lg">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">$900M+</div>
-                    <div class="text-gray-600">Revenue Generated for Clients</div>
-                </div>
-                <div class="stat-card p-6 rounded-lg">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">1,000+</div>
-                    <div class="text-gray-600">Businesses Analyzed</div>
-                </div>
-                <div class="stat-card p-6 rounded-lg">
-                    <div class="text-2xl font-bold text-blue-600 mb-2">40%</div>
-                    <div class="text-gray-600">Average Lead Increase</div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Website Analysis -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-globe text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">Website Analysis & Key Findings</h2>
-            </div>
-            
-            <div class="space-y-4">
-                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-                        <i class="fas fa-mobile-alt text-blue-500 mr-3"></i>
-                        Mobile Optimization
-                    </h3>
-                    <p class="text-gray-600">Critical for capturing the 60%+ of web traffic that comes from mobile devices. Mobile-first design ensures optimal user experience across all devices.</p>
-                </div>
+            <div class="section-card p-8 rounded-lg mb-8">
+                <h2 class="text-3xl font-bold navy-text mb-6">Executive Summary</h2>
                 
-                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-                        <i class="fas fa-tachometer-alt text-blue-500 mr-3"></i>
-                        Page Speed Optimization
-                    </h3>
-                    <p class="text-gray-600">Every 1-second delay in page load time reduces conversions by 7%. Fast-loading pages improve user experience and search rankings.</p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-                        <i class="fas fa-search text-blue-500 mr-3"></i>
-                        AEO Foundation
-                    </h3>
-                    <p class="text-gray-600">Ask Engine Optimization through proper meta tags, schema markup, and content structure to capture voice search and AI-powered queries.</p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
-                        <i class="fas fa-mouse-pointer text-blue-500 mr-3"></i>
-                        Conversion Optimization
-                    </h3>
-                    <p class="text-gray-600">Strategic placement of call-to-action buttons, simplified navigation, and optimized conversion funnels to maximize lead generation.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- Multi-Channel Marketing Opportunities -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-bullhorn text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">Multi-Channel Marketing Opportunities</h2>
-            </div>
-            
-            <div class="space-y-8">
-                <!-- AEO -->
-                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 border border-blue-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-microphone text-blue-600 mr-3"></i>
-                        Ask Engine Optimization (AEO)
-                    </h3>
-                    <p class="text-gray-700 mb-4">
-                        AEO drives 53% of website traffic and is evolving with AI-powered search engines. Focus on conversational keywords, local AEO, and content optimization for voice and AI queries.
-                    </p>
-                    <div class="bg-blue-100 rounded-lg p-4">
-                        <p class="text-blue-800 font-medium">Key Focus Areas:</p>
-                        <ul class="text-blue-700 mt-2 list-disc list-inside space-y-1">
-                            <li>Conversational keyword optimization</li>
-                            <li>Featured snippet optimization</li>
-                            <li>Local business AEO strategies</li>
-                            <li>Voice search preparation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- PPC -->
-                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-8 border border-green-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-mouse-pointer text-green-600 mr-3"></i>
-                        Pay-Per-Click Advertising (PPC)
-                    </h3>
-                    <p class="text-gray-700 mb-4">
-                        Google Ads provide immediate visibility with an average ROI of $2 for every $1 spent when properly optimized. Perfect for rapid market testing and scaling successful campaigns.
-                    </p>
-                    <div class="bg-green-100 rounded-lg p-4">
-                        <p class="text-green-800 font-medium">Strategic Benefits:</p>
-                        <ul class="text-green-700 mt-2 list-disc list-inside space-y-1">
-                            <li>Immediate market visibility</li>
-                            <li>Precise audience targeting</li>
-                            <li>Measurable ROI tracking</li>
-                            <li>Rapid campaign optimization</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Social Media -->
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-8 border border-purple-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-share-alt text-purple-600 mr-3"></i>
-                        Social Media Marketing
-                    </h3>
-                    <p class="text-gray-700 mb-4">
-                        73% of marketers believe social media marketing is effective for their business. Platform-specific strategies for Facebook, Instagram, LinkedIn, and TikTok based on your target demographic.
-                    </p>
-                    <div class="bg-purple-100 rounded-lg p-4">
-                        <p class="text-purple-800 font-medium">Platform Strategy:</p>
-                        <ul class="text-purple-700 mt-2 list-disc list-inside space-y-1">
-                            <li>LinkedIn for B2B engagement</li>
-                            <li>Facebook for community building</li>
-                            <li>Instagram for visual storytelling</li>
-                            <li>TikTok for younger demographics</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Email Marketing -->
-                <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-8 border border-orange-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-envelope text-orange-600 mr-3"></i>
-                        Email Marketing
-                    </h3>
-                    <p class="text-gray-700 mb-4">
-                        Highest ROI channel at $36 return per $1 invested according to the Data & Marketing Association. Automated sequences can nurture leads effectively through the entire customer journey.
-                    </p>
-                    <div class="bg-orange-100 rounded-lg p-4">
-                        <p class="text-orange-800 font-medium">Email Automation:</p>
-                        <ul class="text-orange-700 mt-2 list-disc list-inside space-y-1">
-                            <li>Welcome series for new subscribers</li>
-                            <li>Lead nurturing sequences</li>
-                            <li>Abandoned cart recovery</li>
-                            <li>Customer retention campaigns</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Content Marketing -->
-                <div class="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-8 border border-teal-100">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-pen-fancy text-teal-600 mr-3"></i>
-                        Content Marketing
-                    </h3>
-                    <p class="text-gray-700 mb-4">
-                        Content marketing generates 3x more leads than paid search advertising. Blog posts, videos, and infographics establish authority and drive organic traffic.
-                    </p>
-                    <div class="bg-teal-100 rounded-lg p-4">
-                        <p class="text-teal-800 font-medium">Content Strategy:</p>
-                        <ul class="text-teal-700 mt-2 list-disc list-inside space-y-1">
-                            <li>AEO-optimized blog content</li>
-                            <li>Video marketing campaigns</li>
-                            <li>Interactive infographics</li>
-                            <li>Thought leadership articles</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- 90-Day Action Plan -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-calendar-alt text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">90-Day Action Plan</h2>
-            </div>
-            
-            <div class="space-y-6">
-                <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 flex items-center">
-                        <span class="bg-white text-blue-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-lg font-bold">1</span>
-                        Month 1: Foundation & Analysis
-                    </h3>
-                    <ul class="space-y-2 text-blue-100">
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-blue-300"></i>Complete website audit and technical AEO fixes</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-blue-300"></i>Set up Google Analytics 4 and conversion tracking</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-blue-300"></i>Competitor analysis and market research</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-blue-300"></i>Content strategy development and keyword research</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 flex items-center">
-                        <span class="bg-white text-green-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-lg font-bold">2</span>
-                        Month 2: Content & Social Launch
-                    </h3>
-                    <ul class="space-y-2 text-green-100">
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-green-300"></i>Launch AEO-optimized blog content program</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-green-300"></i>Implement social media marketing campaigns</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-green-300"></i>Set up email marketing automation sequences</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-green-300"></i>Create lead magnets and landing pages</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl p-8">
-                    <h3 class="text-2xl font-bold mb-4 flex items-center">
-                        <span class="bg-white text-purple-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 text-lg font-bold">3</span>
-                        Month 3: Optimization & Scaling
-                    </h3>
-                    <ul class="space-y-2 text-purple-100">
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-purple-300"></i>Launch PPC campaigns with optimized targeting</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-purple-300"></i>A/B test email campaigns and landing pages</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-purple-300"></i>Performance analysis and strategy refinement</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle mr-3 mt-1 text-purple-300"></i>Scale successful campaigns and channels</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-divider"></div>
-
-        <!-- ROI Projections -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-chart-bar text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">ROI Projections & Performance Metrics</h2>
-            </div>
-            
-            <div class="bg-gray-50 rounded-xl p-8 mb-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-6">Expected Returns by Channel (Industry Averages)</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                        <h4 class="font-bold text-blue-600 text-lg mb-2">Email Marketing</h4>
-                        <div class="text-3xl font-bold text-gray-800 mb-1">$36:1</div>
-                        <p class="text-gray-600 text-sm">Return on investment¹</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                        <h4 class="font-bold text-green-600 text-lg mb-2">Content Marketing</h4>
-                        <div class="text-3xl font-bold text-gray-800 mb-1">3x</div>
-                        <p class="text-gray-600 text-sm">More leads than paid search²</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                        <h4 class="font-bold text-purple-600 text-lg mb-2">AEO (Organic Search)</h4>
-                        <div class="text-3xl font-bold text-gray-800 mb-1">53%</div>
-                        <p class="text-gray-600 text-sm">Of all website traffic³</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                        <h4 class="font-bold text-orange-600 text-lg mb-2">PPC Advertising</h4>
-                        <div class="text-3xl font-bold text-gray-800 mb-1">$2:1</div>
-                        <p class="text-gray-600 text-sm">Average return on ad spend⁴</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
-                <h3 class="text-lg font-bold text-blue-800 mb-3">90-Day Performance Targets</h3>
-                <div class="grid md:grid-cols-3 gap-4 text-center">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div>
-                        <div class="text-2xl font-bold text-blue-600">40%</div>
-                        <div class="text-blue-700">Increase in Qualified Leads</div>
+                        <h3 class="text-2xl font-bold navy-text mb-4">The AI Implementation Crisis</h3>
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                            <p class="text-lg"><strong>87% of businesses</strong> know AI will transform their industry</p>
+                        </div>
+                        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-4">
+                            <p class="text-lg"><strong>Only 23%</strong> have implemented meaningful AI solutions</p>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                            <p class="text-lg gold-text font-semibold"><strong>64% Implementation Gap</strong> - This is your opportunity</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="gapChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="gold-bg text-white p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3">Your AI Implementation Roadmap</h3>
+                    <p class="mb-4">This report provides a proven 90-day framework to bridge your AI implementation gap and join the 23% of businesses already generating results with AI marketing systems.</p>
+                    <div class="grid md:grid-cols-4 gap-4 text-center">
+                        <div class="bg-white bg-opacity-20 p-3 rounded">
+                            <i class="fas fa-robot text-2xl mb-2"></i>
+                            <div class="font-semibold">Automation</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded">
+                            <i class="fas fa-content-copy text-2xl mb-2"></i>
+                            <div class="font-semibold">Content</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded">
+                            <i class="fas fa-funnel-dollar text-2xl mb-2"></i>
+                            <div class="font-semibold">Lead Gen</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded">
+                            <i class="fas fa-headset text-2xl mb-2"></i>
+                            <div class="font-semibold">Customer Service</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Sections -->
+        <section class="mb-12">
+            <!-- AI Marketing Automation -->
+            <div class="section-card p-8 rounded-lg mb-8">
+                <h2 class="text-3xl font-bold navy-text mb-6 flex items-center">
+                    <i class="fas fa-robot gold-text mr-4"></i>
+                    AI Marketing Automation Blueprint
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold navy-text mb-4">Email Sequence Templates</h3>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Welcome series (5-email sequence)</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Lead nurturing campaigns</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Re-engagement workflows</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Customer retention sequences</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-semibold navy-text mb-4">Social Media Automation</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Content scheduling workflows</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Engagement automation rules</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Multi-platform posting systems</li>
+                            <li class="flex items-start"><i class="fas fa-check gold-text mr-2 mt-1"></i>Performance tracking dashboards</li>
+                        </ul>
                     </div>
                     <div>
-                        <div class="text-2xl font-bold text-blue-600">25%</div>
-                        <div class="text-blue-700">Website Traffic Growth</div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="font-bold navy-text mb-3">ROI Impact</h4>
+                            <div class="chart-container" style="height: 200px;">
+                                <canvas id="automationROI"></canvas>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <div class="gold-text font-bold text-lg">Average ROI: 36:1</div>
+                                <div class="text-sm text-gray-600">Email marketing automation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Creation at Scale -->
+            <div class="section-card p-8 rounded-lg mb-8">
+                <h2 class="text-3xl font-bold navy-text mb-6 flex items-center">
+                    <i class="fas fa-pen-nib gold-text mr-4"></i>
+                    Content Creation at Scale
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="stat-number navy-text">3x</div>
+                        <div class="gold-text font-semibold">More Leads</div>
+                        <div class="text-sm text-gray-600">vs traditional marketing</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="stat-number navy-text">90%</div>
+                        <div class="gold-text font-semibold">Time Saved</div>
+                        <div class="text-sm text-gray-600">on content creation</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="stat-number navy-text">50+</div>
+                        <div class="gold-text font-semibold">Content Pieces</div>
+                        <div class="text-sm text-gray-600">per week possible</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold navy-text mb-4">AI Content Strategies</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-gold pl-4">
+                                <h4 class="font-semibold">Blog Post Generation</h4>
+                                <p class="text-sm text-gray-600">SEO-optimized articles, industry insights, thought leadership pieces</p>
+                            </div>
+                            <div class="border-l-4 border-gold pl-4">
+                                <h4 class="font-semibold">Social Media Content</h4>
+                                <p class="text-sm text-gray-600">Platform-specific posts, engagement campaigns, visual content ideas</p>
+                            </div>
+                            <div class="border-l-4 border-gold pl-4">
+                                <h4 class="font-semibold">Ad Copy & Headlines</h4>
+                                <p class="text-sm text-gray-600">Conversion-optimized copy, A/B test variations, campaign messaging</p>
+                            </div>
+                        </div>
                     </div>
                     <div>
-                        <div class="text-2xl font-bold text-blue-600">15%</div>
-                        <div class="text-blue-700">Conversion Rate Improvement</div>
+                        <div class="bg-navy text-white p-6 rounded-lg">
+                            <h4 class="font-bold mb-4">Content Calendar Template</h4>
+                            <div class="grid grid-cols-7 gap-1 text-xs mb-4">
+                                <div class="text-center font-semibold">Mon</div>
+                                <div class="text-center font-semibold">Tue</div>
+                                <div class="text-center font-semibold">Wed</div>
+                                <div class="text-center font-semibold">Thu</div>
+                                <div class="text-center font-semibold">Fri</div>
+                                <div class="text-center font-semibold">Sat</div>
+                                <div class="text-center font-semibold">Sun</div>
+                                <div class="bg-gold text-navy p-1 rounded text-center">Blog</div>
+                                <div class="bg-white bg-opacity-20 p-1 rounded text-center">Social</div>
+                                <div class="bg-gold text-navy p-1 rounded text-center">Email</div>
+                                <div class="bg-white bg-opacity-20 p-1 rounded text-center">Social</div>
+                                <div class="bg-gold text-navy p-1 rounded text-center">Video</div>
+                                <div class="bg-white bg-opacity-20 p-1 rounded text-center">Social</div>
+                                <div class="bg-gold text-navy p-1 rounded text-center">Plan</div>
+                            </div>
+                            <p class="text-sm opacity-90">Automated content scheduling across all channels</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Next Steps -->
-        <section class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="icon-circle w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                    <i class="fas fa-rocket text-xl"></i>
-                </div>
-                <h2 class="heading-font text-3xl font-bold gradient-text">Next Steps</h2>
-            </div>
-            
-            <div class="bg-gradient-to-br from-blue-600 to-purple-700 text-white rounded-2xl p-8 text-center">
-                <h3 class="text-2xl font-bold mb-4">Ready to implement these strategies?</h3>
-                <p class="text-xl mb-6 opacity-95">Our team has generated over $900M in revenue for clients worldwide.</p>
+            <!-- Lead Generation Systems -->
+            <div class="section-card p-8 rounded-lg mb-8">
+                <h2 class="text-3xl font-bold navy-text mb-6 flex items-center">
+                    <i class="fas fa-funnel-dollar gold-text mr-4"></i>
+                    Lead Generation Systems
+                </h2>
                 
                 <div class="mb-8">
-                    <a href="https://meetings-na2.hubspot.com/brent-ragan" target="_blank" class="cta-button inline-block px-8 py-4 text-white text-lg font-semibold rounded-lg hover:no-underline">
-                        <i class="fas fa-calendar-check mr-3"></i>
-                        Schedule Your Free Strategy Session Today
-                    </a>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="leadFunnel"></canvas>
+                    </div>
                 </div>
-                
-                <div class="grid md:grid-cols-2 gap-8 text-left">
+
+                <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <h4 class="font-bold text-lg mb-3 flex items-center">
-                            <i class="fas fa-envelope mr-3 text-blue-300"></i>
-                            Contact Information
-                        </h4>
-                        <p class="opacity-90">Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b0a0b7bca692b3bbbfb3a0b9b7a6bbbcb5a2b3a0a6bcb7a0fcb1bdbf">[email&#160;protected]</a></p>
-                        <p class="opacity-90">Website: aimarketingpartner.com</p>
+                        <h3 class="text-xl font-semibold navy-text mb-4">Automated Prospect Identification</h3>
+                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i class="fas fa-search gold-text mr-2"></i>AI-powered lead scoring</li>
+                                <li class="flex items-center"><i class="fas fa-target gold-text mr-2"></i>Behavioral tracking systems</li>
+                                <li class="flex items-center"><i class="fas fa-filter gold-text mr-2"></i>Advanced segmentation rules</li>
+                                <li class="flex items-center"><i class="fas fa-chart-line gold-text mr-2"></i>Predictive analytics</li>
+                            </ul>
+                        </div>
                     </div>
                     <div>
-                        <h4 class="font-bold text-lg mb-3 flex items-center">
-                            <i class="fas fa-star mr-3 text-yellow-300"></i>
-                            What You'll Get
-                        </h4>
-                        <p class="opacity-90">✓ 30-minute strategy consultation</p>
-                        <p class="opacity-90">✓ Custom marketing audit</p>
-                        <p class="opacity-90">✓ Priority implementation roadmap</p>
+                        <h3 class="text-xl font-semibold navy-text mb-4">Conversion Optimization</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-green-50 rounded">
+                                <span>Landing Page Conversion</span>
+                                <span class="gold-text font-bold">+127%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-blue-50 rounded">
+                                <span>Email Open Rates</span>
+                                <span class="gold-text font-bold">+89%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-purple-50 rounded">
+                                <span>Lead Quality Score</span>
+                                <span class="gold-text font-bold">+156%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Service AI -->
+            <div class="section-card p-8 rounded-lg mb-8">
+                <h2 class="text-3xl font-bold navy-text mb-6 flex items-center">
+                    <i class="fas fa-headset gold-text mr-4"></i>
+                    Customer Service AI Implementation
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-clock text-3xl gold-text mb-2"></i>
+                        <div class="font-bold navy-text">24/7</div>
+                        <div class="text-sm">Availability</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-tachometer-alt text-3xl gold-text mb-2"></i>
+                        <div class="font-bold navy-text">< 2 sec</div>
+                        <div class="text-sm">Response Time</div>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <i class="fas fa-percentage text-3xl gold-text mb-2"></i>
+                        <div class="font-bold navy-text">95%</div>
+                        <div class="text-sm">Resolution Rate</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold navy-text mb-4">Chatbot Deployment Strategy</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="bg-gold text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">1</div>
+                                <div>
+                                    <h4 class="font-semibold">Assessment & Planning</h4>
+                                    <p class="text-sm text-gray-600">Analyze current support volume and common queries</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-gold text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">2</div>
+                                <div>
+                                    <h4 class="font-semibold">FAQ Automation</h4>
+                                    <p class="text-sm text-gray-600">Build intelligent response database</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-gold text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1">3</div>
+                                <div>
+                                    <h4 class="font-semibold">Integration & Testing</h4>
+                                    <p class="text-sm text-gray-600">Deploy across all customer touchpoints</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="navy-bg text-white p-6 rounded-lg">
+                            <h4 class="font-bold mb-4">Cost Savings Analysis</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span>Support Staff Reduction</span>
+                                    <span class="gold-text">-60%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Response Time Improvement</span>
+                                    <span class="gold-text">+85%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Customer Satisfaction</span>
+                                    <span class="gold-text">+42%</span>
+                                </div>
+                                <div class="border-t border-white border-opacity-30 pt-3 mt-3">
+                                    <div class="flex justify-between font-bold">
+                                        <span>Annual Savings</span>
+                                        <span class="gold-text">$247K+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- References -->
-        <section class="mb-8">
-            <div class="bg-gray-100 rounded-lg p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-4">References & Data Sources</h3>
-                <div class="text-sm text-gray-600 space-y-2">
-                    <p>¹ Data & Marketing Association, 2023 - Email Marketing ROI Study</p>
-                    <p>² Content Marketing Institute, 2024 - B2B Content Marketing Report</p>
-                    <p>³ BrightEdge Research, 2024 - Organic Search Traffic Analysis</p>
-                    <p>⁴ Google Economic Impact Study, 2023 - PPC Performance Metrics</p>
-                    <p>⁵ HubSpot State of Marketing Report, 2024 - Social Media Effectiveness</p>
+        <!-- Case Studies -->
+        <section class="mb-12">
+            <div class="section-card p-8 rounded-lg">
+                <h2 class="text-3xl font-bold navy-text mb-8 text-center">Case Studies: $900M+ Revenue Generated</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                        <h3 class="font-bold navy-text mb-3">Multi-Location Restaurant Chain</h3>
+                        <div class="space-y-2 text-sm mb-4">
+                            <div class="flex justify-between">
+                                <span>Industry:</span>
+                                <span class="font-semibold">Food Service</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Locations:</span>
+                                <span class="font-semibold">47 stores</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Implementation:</span>
+                                <span class="font-semibold">90 days</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-2xl font-bold gold-text">+312%</div>
+                            <div class="text-sm">Revenue increase</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+                        <h3 class="font-bold navy-text mb-3">B2B Software Company</h3>
+                        <div class="space-y-2 text-sm mb-4">
+                            <div class="flex justify-between">
+                                <span>Industry:</span>
+                                <span class="font-semibold">SaaS</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Employees:</span>
+                                <span class="font-semibold">150-200</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Implementation:</span>
+                                <span class="font-semibold">75 days</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-2xl font-bold gold-text">+189%</div>
+                            <div class="text-sm">Lead generation</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+                        <h3 class="font-bold navy-text mb-3">Professional Services Firm</h3>
+                        <div class="space-y-2 text-sm mb-4">
+                            <div class="flex justify-between">
+                                <span>Industry:</span>
+                                <span class="font-semibold">Legal Services</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Locations:</span>
+                                <span class="font-semibold">12 offices</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Implementation:</span>
+                                <span class="font-semibold">85 days</span>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4">
+                            <div class="text-2xl font-bold gold-text">+267%</div>
+                            <div class="text-sm">Client acquisition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 gold-bg text-white rounded-lg text-center">
+                    <div class="text-4xl font-bold mb-2">$900M+</div>
+                    <div class="text-lg">Total Revenue Generated Across All Client Implementations</div>
+                    <div class="text-sm opacity-90 mt-2">Average implementation time: 82 days | Average ROI: 247%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Timeline -->
+        <section class="mb-12">
+            <div class="section-card p-8 rounded-lg">
+                <h2 class="text-3xl font-bold navy-text mb-8 text-center">90-Day AI Implementation Plan</h2>
+                
+                <div class="space-y-8">
+                    <div class="timeline-item pl-8 py-4">
+                        <h3 class="text-xl font-bold navy-text mb-2">Days 1-30: Foundation & Assessment</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 1-2: Discovery</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Current system audit</li>
+                                    <li>• Goal setting and KPI definition</li>
+                                    <li>• Tool selection and setup</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 3-4: Initial Setup</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Platform integration</li>
+                                    <li>• Basic automation rules</li>
+                                    <li>• Team training sessions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item pl-8 py-4">
+                        <h3 class="text-xl font-bold navy-text mb-2">Days 31-60: Implementation & Testing</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 5-6: Core Systems</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Email automation deployment</li>
+                                    <li>• Content creation workflows</li>
+                                    <li>• Lead scoring setup</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 7-8: Advanced Features</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Chatbot deployment</li>
+                                    <li>• Social media automation</li>
+                                    <li>• A/B testing implementation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item pl-8 py-4">
+                        <h3 class="text-xl font-bold navy-text mb-2">Days 61-90: Optimization & Scale</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 9-10: Performance Review</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Analytics and reporting setup</li>
+                                    <li>• Performance optimization</li>
+                                    <li>• System refinements</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold gold-text mb-2">Week 11-12: Scale & Expand</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Multi-channel integration</li>
+                                    <li>• Advanced segmentation</li>
+                                    <li>• Future roadmap planning</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                    <h3 class="text-xl font-bold navy-text mb-4 text-center">Expected Results Timeline</h3>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="resultsTimeline"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="mb-12">
+            <div class="section-card p-8 rounded-lg">
+                <h2 class="text-3xl font-bold navy-text mb-8">Resources & Tools</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div>
+                        <h3 class="text-lg font-bold navy-text mb-4">Recommended Tools</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center p-3 bg-gray-50 rounded">
+                                <i class="fas fa-envelope gold-text mr-3"></i>
+                                <div>
+                                    <div class="font-semibold">HubSpot</div>
+                                    <div class="text-sm text-gray-600">CRM & Automation</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded">
+                                <i class="fas fa-share-alt gold-text mr-3"></i>
+                                <div>
+                                    <div class="font-semibold">Buffer</div>
+                                    <div class="text-sm text-gray-600">Social Media</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded">
+                                <i class="fas fa-chart-bar gold-text mr-3"></i>
+                                <div>
+                                    <div class="font-semibold">Google Analytics</div>
+                                    <div class="text-sm text-gray-600">Performance Tracking</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-bold navy-text mb-4">Template Downloads</h3>
+                        <div class="space-y-3">
+                            <div class="border border-gold p-3 rounded">
+                                <i class="fas fa-download gold-text mr-2"></i>
+                                <span class="font-semibold">Email Sequence Templates</span>
+                            </div>
+                            <div class="border border-gold p-3 rounded">
+                                <i class="fas fa-download gold-text mr-2"></i>
+                                <span class="font-semibold">Content Calendar Template</span>
+                            </div>
+                            <div class="border border-gold p-3 rounded">
+                                <i class="fas fa-download gold-text mr-2"></i>
+                                <span class="font-semibold">ROI Tracking Spreadsheet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-bold navy-text mb-4">Additional Reading</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="border-l-4 border-gold pl-3">
+                                <div class="font-semibold">"AI Marketing Mastery"</div>
+                                <div class="text-gray-600">Complete implementation guide</div>
+                            </div>
+                            <div class="border-l-4 border-gold pl-3">
+                                <div class="font-semibold">"Multi-Location Marketing"</div>
+                                <div class="text-gray-600">Scaling strategies playbook</div>
+                            </div>
+                            <div class="border-l-4 border-gold pl-3">
+                                <div class="font-semibold">"ROI Optimization Tactics"</div>
+                                <div class="text-gray-600">Advanced performance guide</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call-to-Action -->
+        <section class="mb-12">
+            <div class="gradient-navy text-white p-8 rounded-lg text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Implement Your AI Marketing Strategy?</h2>
+                <p class="text-xl mb-6 opacity-90">Join the 23% of businesses already generating results with AI systems</p>
+                
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg mb-6 max-w-2xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold gold-text">90 Days</div>
+                            <div class="text-sm">Implementation Timeline</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold gold-text">247%</div>
+                            <div class="text-sm">Average ROI</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold gold-text">24/7</div>
+                            <div class="text-sm">Automated Systems</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://meetings-na2.hubspot.com/brent-ragan?uuid=05a83f15-d4e3-434e-bc07-50a7a2c90149" target="_blank" class="cta-button text-navy font-bold py-4 px-8 rounded-lg text-lg mb-4 inline-block">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Schedule Your AI Strategy Call
+                </a>
+                
+                <div class="text-sm opacity-75">
+                    <i class="fas fa-clock mr-1"></i>
+                    Limited spots available - Book within 48 hours for priority implementation
                 </div>
             </div>
         </section>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Set dynamic date
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentDate = new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            document.getElementById('current-date').textContent = currentDate;
+    <!-- Footer -->
+    <footer class="gradient-navy text-white py-8">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold gold-text mb-4">AI Marketing Partner</h3>
+                    <p class="mb-4">Hawaii-based agency specializing in AI marketing implementation for growing businesses.</p>
+                    <div class="gold-text font-bold">$900M+ Revenue Generated</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold gold-text mb-4">Contact Information</h3>
+                    <div class="space-y-2 text-sm">
+                        <div><i class="fas fa-envelope mr-2"></i> <a href="mailto:brent@aimarketingpartner.com" class="hover:text-gold transition-colors">brent@aimarketingpartner.com</a></div>
+                        <div><i class="fas fa-map-marker-alt mr-2"></i> Hawaii, USA</div>
+                        <div><i class="fas fa-clock mr-2"></i> <a href="https://meetings-na2.hubspot.com/brent-ragan?uuid=05a83f15-d4e3-434e-bc07-50a7a2c90149" target="_blank" class="hover:text-gold transition-colors">Available by appointment</a></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold gold-text mb-4">Follow Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.linkedin.com/in/brentragan/" target="_blank" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/people/Ai-Marketing-Partner/61564053584716/" target="_blank" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/aimarketingpartner/" target="_blank" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCv_9d3YZfCG3tBu3IA3Pnxw" target="_blank" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.pinterest.com/AiMarketingPartner/" target="_blank" class="text-2xl hover:text-gold transition-colors"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white border-opacity-20 pt-6 text-center text-sm">
+                <p>&copy; 2024 AI Marketing Partner. All rights reserved. | 
+                <a href="https://aimarketingpartner.com/privacy-policy" class="hover:text-gold transition-colors">Privacy Policy</a> | 
+                <a href="https://aimarketingpartner.com/toc" class="hover:text-gold transition-colors">Terms of Service</a> | 
+                <a href="https://aimarketingpartner.com/cookies" class="hover:text-gold transition-colors">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // AI Implementation Gap Chart
+        const gapCtx = document.getElementById('gapChart').getContext('2d');
+        new Chart(gapCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Know AI Will Transform (87%)', 'Have Implemented AI (23%)'],
+                datasets: [{
+                    data: [87, 23],
+                    backgroundColor: ['#FF6B6B', '#4ECDC4'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'The AI Implementation Crisis'
+                    }
+                }
+            }
+        });
+
+        // Automation ROI Chart
+        const roiCtx = document.getElementById('automationROI').getContext('2d');
+        new Chart(roiCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Manual Process', 'AI Automated'],
+                datasets: [{
+                    label: 'ROI Multiplier',
+                    data: [1, 36],
+                    backgroundColor: ['#FF6B6B', '#D4AF37'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Lead Funnel Chart
+        const funnelCtx = document.getElementById('leadFunnel').getContext('2d');
+        new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Traffic', 'Leads', 'Qualified', 'Customers'],
+                datasets: [{
+                    label: 'Conversion Numbers',
+                    data: [10000, 2500, 1000, 250],
+                    backgroundColor: ['#1B365D', '#D4AF37', '#4ECDC4', '#FF6B6B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'AI-Optimized Lead Funnel Performance'
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Results Timeline Chart
+        const timelineCtx = document.getElementById('resultsTimeline').getContext('2d');
+        new Chart(timelineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 4', 'Week 8', 'Week 12', 'Week 16'],
+                datasets: [{
+                    label: 'Revenue Increase (%)',
+                    data: [0, 25, 75, 150, 247],
+                    borderColor: '#D4AF37',
+                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
         });
     </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9762655caff4ef8c","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDtfirJZDM4DhkCPfZwbR1lVvtb18isjcN5KlvndWjKlEmVb%2FnDVsNAG4vCzsM8mRoC53Q%2F0V0VQClLJVLoJFoCOHCcyzOLoMoPtZ8mvbNKtOZs4O5X28oNd4HAAunTD5hxZcyEhjEisG3Fx1yBnSWKQxuMhteuPkE%2FZRYvA7HwZSDMM%2BIc2BuvfO7tshpLEGK3GkNqAsW5qgMyAknGN0ts5xFykDusIezDlharZrtIQ%2Fl2OFGRdD4iKy0BFmymCGoRNwD6qmmpT%2BnibNv%2BGBvZLMHXhgTSNAKbWsOR6m%2Ba6f2Py3gZAFh08h8lx440HjogchMpryIzdZj%2Fy3ymgP5LoDonyMA2Xo7LMQAsjkSwDPsVKewufbEMsqltvwZT%2BMQ%2Fn9tqTaPpGfjEhFN1Bfvvz9o6o9%2B0syve4UVq9rBK9L9zFOcB8LEdxDx6xfdsrMMPDYCQRtEz%2Flz4hfAL%2FLM4FWxVJd%2Fehix7kKr%2Bl3ncwtyXnC2lDeOgiOr602gp7BHZ5QOIWLKUEFj%2F%2BtrKl49Fc%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDndXBBBkMRH%2BNCzIbluqR4sGUm88k056x%2BgihsrKMXKvl8bX7MvUUDIf%2BW7h%2FI9Jl%2Fe57Rtcs4BVq0dSeUPx80P8JhQpvF8oYrRBEEVo8CzDZmmJFRW49WwK%2FhfIXnt3xxLTCMdgU7oifSLCl6s4VuT6GQpkWUvjB%2FCrDvih%2BSqYavmO8Vjz3eninb1iQEhbmM5BF%2Bkb3v7chm9s0gOMhdnOZ4RV9a4ZMDISP%2F6XOwKfew4joDHYEcHyZUNPahcAOW5IVDnZGfaP6t5UIp7Ot59jzcT%2F3DkOOOv41d4SqllI3xB%2BI9ZprDN542scujBOuRtsepmfnY8f5cUB3WUQLDwAPO28ag33o9hNPP3gR%2F9JdsKvQIQAgD%2F4gf6t9MRk8N9fQHQ2DPe%2BDzoiYm3uqxiMTIjfG3W%2BMLAbb2iJK1WDYRYR6gBNaqSzyPXGnIgnCyooYdFuEz4LdLHERnJhFKQ%2BYnKWuLa9aEbZv582FoI%2Fe18ufKmMgO%2BuvWIorlW97%2FaEhgZgJWCtibXLBUNkPyU%3D";
         window.__genspark_locale = "en-US";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDtfirJZDM4DhkCPfZwbR1lVvtb18isjcN5KlvndWjKlEmVb/nDVsNAG4vCzsM8mRoC53Q/0V0VQClLJVLoJFoCOHCcyzOLoMoPtZ8mvbNKtOZs4O5X28oNd4HAAunTD5hxZcyEhjEisG3Fx1yBnSWKQxuMhteuPkE/ZRYvA7HwZSDMM+Ic2BuvfO7tshpLEGK3GkNqAsW5qgMyAknGN0ts5xFykDusIezDlharZrtIQ/l2OFGRdD4iKy0BFmymCGoRNwD6qmmpT+nibNv+GBvZLMHXhgTSNAKbWsOR6m+a6f2Py3gZAFh08h8lx440HjogchMpryIzdZj/y3ymgP5LoDonyMA2Xo7LMQAsjkSwDPsVKewufbEMsqltvwZT+MQ/n9tqTaPpGfjEhFN1Bfvvz9o6o9+0syve4UVq9rBK9L9zFOcB8LEdxDx6xfdsrMMPDYCQRtEz/lz4hfAL/LM4FWxVJd/ehix7kKr+l3ncwtyXnC2lDeOgiOr602gp7BHZ5QOIWLKUEFj/+trKl49Fc=";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDndXBBBkMRH+NCzIbluqR4sGUm88k056x+gihsrKMXKvl8bX7MvUUDIf+W7h/I9Jl/e57Rtcs4BVq0dSeUPx80P8JhQpvF8oYrRBEEVo8CzDZmmJFRW49WwK/hfIXnt3xxLTCMdgU7oifSLCl6s4VuT6GQpkWUvjB/CrDvih+SqYavmO8Vjz3eninb1iQEhbmM5BF+kb3v7chm9s0gOMhdnOZ4RV9a4ZMDISP/6XOwKfew4joDHYEcHyZUNPahcAOW5IVDnZGfaP6t5UIp7Ot59jzcT/3DkOOOv41d4SqllI3xB+I9ZprDN542scujBOuRtsepmfnY8f5cUB3WUQLDwAPO28ag33o9hNPP3gR/9JdsKvQIQAgD/4gf6t9MRk8N9fQHQ2DPe+DzoiYm3uqxiMTIjfG3W+MLAbb2iJK1WDYRYR6gBNaqSzyPXGnIgnCyooYdFuEz4LdLHERnJhFKQ+YnKWuLa9aEbZv582FoI/e18ufKmMgO+uvWIorlW97/aEhgZgJWCtibXLBUNkPyU=";
     </script>
     
     <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
