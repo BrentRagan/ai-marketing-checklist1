@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Marketing Strategy 2025 - A/B Testing Router</title>
-    <meta http-equiv="refresh" content="0;url=https://eihictdi.gensparkspace.com/">
-    <link rel="canonical" href="https://eihictdi.gensparkspace.com/">
+    <title>AI Marketing Strategy 2025 - Loading...</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,21 +14,19 @@
             margin: 0;
             overflow: hidden;
         }
-        .redirect-message {
+        .loading-container {
             max-width: 600px;
             margin: 0 auto;
             padding: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         .logo {
             width: 80px;
             height: 80px;
             margin: 0 auto 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
         }
         .spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
@@ -45,48 +41,102 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .ab-info {
+        .version-info {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
             margin-top: 20px;
-            font-style: italic;
         }
-        .manual-link {
+        .fallback-links {
+            margin-top: 30px;
+            display: none;
+        }
+        .fallback-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #D4AF37;
             color: #D4AF37;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            display: inline-block;
-            padding: 15px 30px;
-            border: 2px solid #D4AF37;
             border-radius: 8px;
+            font-size: 14px;
             transition: all 0.3s ease;
-            font-size: 16px;
         }
-        .manual-link:hover {
+        .fallback-link:hover {
             background-color: #D4AF37;
             color: #1B365D;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
     </style>
-    <script>
-        // Immediate redirect to A/B testing router
-        window.location.href = "https://eihictdi.gensparkspace.com/";
-    </script>
 </head>
 <body>
-    <div class="redirect-message">
+    <div class="loading-container">
         <img src="https://page.gensparksite.com/v1/base64_upload/4bbfe1c1727d964942091ec1cdf3aaca" alt="AI Marketing Partner Logo" class="logo">
         <h1>🚀 Discover How AI Can Transform Your Business in 2025</h1>
         <div class="spinner"></div>
-        <p><strong>Loading your personalized AI Marketing Strategy Guide...</strong></p>
-        <p>You're being directed to our optimized experience.</p>
-        <div class="ab-info">A/B Testing Active: Optimizing your experience</div>
-        <p>If you're not redirected automatically, click below:</p>
-        <a href="https://eihictdi.gensparkspace.com/" class="manual-link">
-            Get Your FREE Personalized Marketing Playbook →
-        </a>
+        <p><strong>Selecting your optimized experience...</strong></p>
+        <div class="version-info" id="versionInfo"></div>
+        
+        <div class="fallback-links" id="fallbackLinks">
+            <p>Choose your preferred experience:</p>
+            <a href="https://eppkmefc.gensparkspace.com/" class="fallback-link">Professional Version</a>
+            <a href="https://nhictqds.gensparkspace.com/" class="fallback-link">Tech Neon Version</a>
+        </div>
     </div>
+
+    <script>
+        // A/B Testing Logic
+        function performABTest() {
+            // Generate random number (0 or 1)
+            const version = Math.floor(Math.random() * 2);
+            
+            // Store version for analytics (optional)
+            const timestamp = new Date().toISOString();
+            const sessionId = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            
+            // Version URLs - USING THE CORRECT GOOD VERSION B
+            const versions = {
+                A: 'https://eppkmefc.gensparkspace.com/',  // Professional Navy/Gold
+                B: 'https://nhictqds.gensparkspace.com/'   // GOOD Dark Neon Theme
+            };
+            
+            const selectedVersion = version === 0 ? 'A' : 'B';
+            const targetUrl = versions[selectedVersion];
+            
+            // Update version info
+            const versionName = selectedVersion === 'A' ? 'Professional' : 'Tech Neon';
+            document.getElementById('versionInfo').innerText = `Loading ${versionName} Version...`;
+            
+            // Store test data (for analytics)
+            try {
+                localStorage.setItem('ab_test_version', selectedVersion);
+                localStorage.setItem('ab_test_timestamp', timestamp);
+                localStorage.setItem('ab_test_session', sessionId);
+                localStorage.setItem('ab_test_url', targetUrl);
+            } catch(e) {
+                // Ignore storage errors
+            }
+            
+            // Redirect after short delay for loading effect
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1500);
+            
+            // Fallback: Show manual links after 5 seconds
+            setTimeout(() => {
+                document.getElementById('fallbackLinks').style.display = 'block';
+            }, 5000);
+        }
+        
+        // Execute A/B test immediately
+        performABTest();
+        
+        // Backup redirect (in case JavaScript fails)
+        setTimeout(() => {
+            if (window.location.href.includes('strategy.aimarketingpartner.com')) {
+                // Default to Version A if something goes wrong
+                window.location.href = 'https://eppkmefc.gensparkspace.com/';
+            }
+        }, 8000);
+    </script>
 </body>
 </html>
+
