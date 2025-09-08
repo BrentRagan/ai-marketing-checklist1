@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Marketing Strategy 2025 - Redirecting...</title>
-    <meta http-equiv="refresh" content="0;url=https://eppkmefc.gensparkspace.com/">
-    <link rel="canonical" href="https://eppkmefc.gensparkspace.com/">
+    <title>AI Marketing Partner - A/B Testing</title>
+    <script>
+        // A/B Testing Random Assignment (50/50 split)
+        function getABVersion() {
+            // Check if user already has a version assigned this session
+            let version = sessionStorage.getItem('ab_version');
+            if (!version) {
+                // Random assignment: 50% Version A, 50% Version B
+                version = Math.random() < 0.5 ? 'A' : 'B';
+                sessionStorage.setItem('ab_version', version);
+            }
+            return version;
+        }
+
+        // Redirect based on assigned version
+        const version = getABVersion();
+        
+        if (version === 'A') {
+            // Version A: Professional Navy/Gold
+            window.location.href = "https://eppkmefc.gensparkspace.com/";
+        } else {
+            // Version B: Dark Neon (Your Preferred Style)
+            window.location.href = "https://nhictqds.gensparkspace.com/";
+        }
+
+        // Track the assignment for analytics
+        console.log('A/B Test Version Assigned:', version);
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,19 +40,10 @@
             color: white;
             margin: 0;
         }
-        .redirect-message {
+        .loading-message {
             max-width: 600px;
             margin: 0 auto;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 12px;
         }
         .spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
@@ -42,40 +58,14 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .manual-link {
-            color: #D4AF37;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            display: inline-block;
-            padding: 15px 30px;
-            border: 2px solid #D4AF37;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-size: 16px;
-        }
-        .manual-link:hover {
-            background-color: #D4AF37;
-            color: #1B365D;
-            transform: translateY(-2px);
-        }
     </style>
-    <script>
-        // Immediate redirect to current working lead magnet
-        window.location.href = "https://eppkmefc.gensparkspace.com/";
-    </script>
 </head>
 <body>
-    <div class="redirect-message">
-        <img src="https://page.gensparksite.com/v1/base64_upload/4bbfe1c1727d964942091ec1cdf3aaca" alt="AI Marketing Partner Logo" class="logo">
-        <h1>🚀 Discover How AI Can Transform Your Business in 2025</h1>
+    <div class="loading-message">
+        <h2>🚀 Loading Your AI Marketing Experience...</h2>
         <div class="spinner"></div>
-        <p><strong>Redirecting to your personalized AI Marketing Strategy Guide...</strong></p>
-        <p>You're being taken to the latest 2025 version with updated features.</p>
-        <p>If you're not redirected automatically, click below:</p>
-        <a href="https://eppkmefc.gensparkspace.com/" class="manual-link">
-            Get Your FREE Personalized Marketing Playbook →
-        </a>
+        <p>Optimizing for your preferences...</p>
     </div>
 </body>
 </html>
+
